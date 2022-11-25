@@ -10,8 +10,8 @@ import { UserMapper } from '@users/mapper/UserMapper';
 @injectable()
 export class AuthenticateUserUseCase {
   constructor(
-    @inject('UsersRepository') private usersRepository: UsersRepositoryProps,
     @inject('HashProvider') private hashProvider: HashProviderProps,
+    @inject('UsersRepository') private usersRepository: UsersRepositoryProps,
   ) {}
 
   public async execute({ email, password }: AuthenticateUserDto) {
@@ -32,6 +32,6 @@ export class AuthenticateUserUseCase {
 
     const formattedUser = UserMapper.dto(user);
 
-    return { formattedUser, token };
+    return { user: formattedUser, token };
   }
 }
