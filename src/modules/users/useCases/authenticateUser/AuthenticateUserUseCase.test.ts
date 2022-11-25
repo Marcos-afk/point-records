@@ -38,7 +38,7 @@ describe('Create user use case', () => {
     expect(authenticateUserUseCase.execute({ email: 'teste', password: '12345678' })).rejects.toBeInstanceOf(AppError);
   });
 
-  it('must not be able to create session for user, invalid password', async () => {
+  it('should not be able to create session for user, invalid password', async () => {
     const user: CreateUserDto = {
       name: 'usuário',
       email: 'teste@gmail.com',

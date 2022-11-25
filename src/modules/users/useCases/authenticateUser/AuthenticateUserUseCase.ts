@@ -17,7 +17,7 @@ export class AuthenticateUserUseCase {
   public async execute({ email, password }: AuthenticateUserDto) {
     const user = await this.usersRepository.findByEmail(email);
     if (!user) {
-      throw new AppError('Email ou senha incorreto');
+      throw new AppError('Email ou senha incorreto', 404);
     }
 
     const passwordIsValid = await this.hashProvider.compare(password, user.password);
