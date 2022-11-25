@@ -5,6 +5,15 @@ import { UsersRepositoryProps } from '@users/repositories/UsersRepositoryProps';
 export class UsersRepositoryInMemory implements UsersRepositoryProps {
   private users: User[] = [];
 
+  async findById(id: number): Promise<User | null> {
+    const user = this.users.find(u => u.id === id);
+    if (user) {
+      return user;
+    }
+
+    return null;
+  }
+
   async findByEmail(email: string): Promise<User | null> {
     const user = this.users.find(u => u.email === email);
     if (user) {

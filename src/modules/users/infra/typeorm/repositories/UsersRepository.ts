@@ -10,6 +10,10 @@ export class UsersRepository implements UsersRepositoryProps {
     this.users = AppSource.getRepository(User);
   }
 
+  async findById(id: number): Promise<User | null> {
+    return await this.users.findOneBy({ id });
+  }
+
   async findByEmail(email: string): Promise<User | null> {
     return await this.users.findOneBy({ email });
   }
