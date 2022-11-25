@@ -18,7 +18,8 @@
       "@container/*": ["shared/container/*"],
       "@errors/*": ["shared/errors/*"],
       "@providers/*": ["shared/providers/*"],
-      "@users/*": ["modules/users/*"]
+      "@users/*": ["modules/users/*"],
+      "@config/*": ["config/*"]
     },
     "esModuleInterop": true,
     "experimentalDecorators": true,

@@ -1,9 +1,11 @@
+import { AuthenticateUserController } from '@users/useCases/authenticateUser/AuthenticateUserController';
 import { CreateUserController } from '@users/useCases/createUser/CreateUserController';
 import { celebrate, Joi, Segments } from 'celebrate';
 import { Router } from 'express';
 
 const usersRoutes = Router();
 const createUserController = new CreateUserController();
+const authenticateUserController = new AuthenticateUserController();
 
 usersRoutes.post(
   '/',
@@ -43,6 +45,25 @@ usersRoutes.post(
     },
   }),
   createUserController.handle,
+);
+
+usersRoutes.post(
+  '/login',
+  celebrate({
+    [Segments.BODY]: {
+      email: Joi.string().required().messages({
+        'string.base': `"email" deve ser uma string`,
+        'string.empty': `"email" não pode ser um campo vazio`,
+        'any.required': `"email" é um campo requerido`,
+      }),
+      password: Joi.string().required().messages({
+        'string.base': `"senha" deve ser uma string`,
+        'string.empty': `"senha" não pode ser um campo vazio`,
+        'any.required': `"senha" é um campo requerido`,
+      }),
+    },
+  }),
+  authenticateUserController.handle,
 );
 
 export { usersRoutes };

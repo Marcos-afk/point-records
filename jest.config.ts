@@ -18,6 +18,7 @@ const config: Config = {
     '^@container/(.*)$': '<rootDir>/src/shared/container/$1',
     '^@providers/(.*)$': '<rootDir>/src/shared/providers/$1',
     '^@users/(.*)$': '<rootDir>/src/modules/users/$1',
+    '^@config/(.*)$': '<rootDir>/src/config/$1',
   },
 };
 
