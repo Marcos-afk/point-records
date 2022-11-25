@@ -1,0 +1,12 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Points Records back-end documentation",
+    "description": "This is a API of points records",
+    "version": "1.0.0",
+    "contact": {
+      "email": "andremarcos967@gmail.com"
+    }
+  },
+  "paths": {}
+}

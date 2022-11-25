@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  database:
+    image: postgres
+    container_name: point_records_database
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=d41d8cd98f00b204
+      - POSTGRES_DB=point_records
+    volumes:
+      - pgdata:/data/postgres
+
+  redis:
+    image: redis:alpine
+    container_name: redis_point_records
+    restart: always
+    ports:
+      - 6379:6379
+    command: redis-server --save 20 1 --loglevel warning --requirepass eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
+    volumes:
+      - cache:/data
+
+  app:
+    build: .
+    container_name: point_records
+    restart: always
+    ports:
+      - 5000:5000
+    volumes:
+      - .:/usr/app
+    links:
+      - database
+      - redis
+    depends_on:
+      - database
+      - redis
+
+volumes:
+  pgdata:
+    driver: local
+  cache:
+    driver: local
