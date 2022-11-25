@@ -10,7 +10,7 @@ let authenticateUserUseCase: AuthenticateUserUseCase;
 let usersRepositoryInMemory: UsersRepositoryInMemory;
 let hashProvider: HashProvider;
 
-describe('Create user use case', () => {
+describe('Authenticate user use case', () => {
   beforeEach(() => {
     usersRepositoryInMemory = new UsersRepositoryInMemory();
     hashProvider = new HashProvider();

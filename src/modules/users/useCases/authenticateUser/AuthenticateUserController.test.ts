@@ -3,7 +3,7 @@ import { app } from '@shared/infra/http/app';
 import { AppSource, InitializeConnection } from '@shared/infra/typeorm';
 import { hash } from 'bcryptjs';
 
-describe('Create user controller', () => {
+describe('Authenticate user controller', () => {
   beforeAll(async () => {
     await InitializeConnection();
     await AppSource.runMigrations();
