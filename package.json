@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "main": "index.ts",
   "license": "MIT",
+  "author": {
+    "name": "Marcos André",
+    "email": "andremarcos967@gmail.com"
+  },
   "scripts": {
     "dev": "ts-node-dev --poll --inspect --transpile-only -r tsconfig-paths/register --ignore-watch src/shared/infra/docs/swagger_output.json  --respawn src/shared/infra/http/server.ts",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli",

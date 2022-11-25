@@ -17,6 +17,7 @@ const config: Config = {
     '^@middlewares/(.*)$': '<rootDir>/src/shared/infra/http/middlewares/$1',
     '^@container/(.*)$': '<rootDir>/src/shared/container/$1',
     '^@providers/(.*)$': '<rootDir>/src/shared/providers/$1',
+    '^@users/(.*)$': '<rootDir>/src/modules/users/$1',
   },
 };
 

@@ -17,7 +17,8 @@
       "@middlewares/*": ["shared/infra/http/middlewares/*"],
       "@container/*": ["shared/container/*"],
       "@errors/*": ["shared/errors/*"],
-      "@providers/*": ["shared/providers/*"]
+      "@providers/*": ["shared/providers/*"],
+      "@users/*": ["modules/users/*"]
     },
     "esModuleInterop": true,
     "experimentalDecorators": true,
