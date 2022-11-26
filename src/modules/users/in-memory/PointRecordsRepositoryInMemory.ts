@@ -5,6 +5,10 @@ import { PointRecordsRepositoryProps } from '@users/repositories/PointRecordsRep
 export class PointRecordsRepositoryInMemory implements PointRecordsRepositoryProps {
   private pointsRecords: PointRecords[] = [];
 
+  async find(): Promise<PointRecords[]> {
+    return this.pointsRecords;
+  }
+
   async create({ user_id }: CreatePointRecordDto): Promise<PointRecords> {
     const pointRecord = new PointRecords();
     Object.assign(pointRecord, {

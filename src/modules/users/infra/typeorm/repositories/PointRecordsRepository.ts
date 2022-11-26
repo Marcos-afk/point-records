@@ -11,6 +11,14 @@ export class PointRecordsRepository implements PointRecordsRepositoryProps {
     this.pointRecords = AppSource.getRepository(PointRecords);
   }
 
+  async find(): Promise<PointRecords[]> {
+    return await this.pointRecords
+      .createQueryBuilder('point_records')
+      .leftJoin('point_records.user', 'users')
+      .addSelect(['users.name', 'users.email', 'users.role'])
+      .getMany();
+  }
+
   async create(createPointRecordDto: CreatePointRecordDto): Promise<PointRecords> {
     const pointRecord = this.pointRecords.create(createPointRecordDto);
     await this.pointRecords.save(pointRecord);
