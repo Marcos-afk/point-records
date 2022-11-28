@@ -18,6 +18,10 @@ export class UsersRepository implements UsersRepositoryProps {
     return await this.users.findOneBy({ email });
   }
 
+  async findUsersAdmin(): Promise<User[]> {
+    return await this.users.find({ where: { role: 'admin' } });
+  }
+
   async create(createUserDto: CreateUserDto): Promise<User> {
     const user = this.users.create(createUserDto);
     await this.users.save(user);

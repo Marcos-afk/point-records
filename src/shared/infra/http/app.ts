@@ -11,19 +11,23 @@ import { InitializeConnection } from '@shared/infra/typeorm';
 import { Routes } from './routes';
 import { rateLimiter } from '@middlewares/rateLimiter';
 import { catchErros } from '@middlewares/catchErrors';
+import path from 'path';
+import { connectToSocket } from '@socket/index';
 
 config();
 
 const app = express();
 InitializeConnection();
+const { io, serverHttp } = connectToSocket(app);
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, '..', 'src', 'tmp')));
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerOutput));
 app.use(rateLimiter);
 app.use('/api/v1', Routes);
 app.use(errors());
 app.use(catchErros);
 
-export { app };
+export { serverHttp, io };

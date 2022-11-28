@@ -1,5 +1,5 @@
 import request from 'supertest';
-import { app } from '@shared/infra/http/app';
+import { serverHttp } from '@shared/infra/http/app';
 import { AppSource, InitializeConnection } from '@shared/infra/typeorm';
 import { hash } from 'bcryptjs';
 
@@ -19,14 +19,14 @@ describe('Create point record controller', () => {
   });
 
   it('should be able to record user point', async () => {
-    const responseToken = await request(app).post('/api/v1/users/login').send({
+    const responseToken = await request(serverHttp).post('/api/v1/users/login').send({
       email: 'admin@point.com.br',
       password: 'admin',
     });
 
     const { token } = responseToken.body.response;
 
-    const response = await request(app)
+    const response = await request(serverHttp)
       .get('/api/v1/point-records')
       .set({
         Authorization: `Bearer ${token}`,

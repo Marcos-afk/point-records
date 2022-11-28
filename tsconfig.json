@@ -19,7 +19,8 @@
       "@errors/*": ["shared/errors/*"],
       "@providers/*": ["shared/providers/*"],
       "@users/*": ["modules/users/*"],
-      "@config/*": ["config/*"]
+      "@config/*": ["config/*"],
+      "@socket/*": ["shared/infra/http/socket/*"]
     },
     "esModuleInterop": true,
     "experimentalDecorators": true,

@@ -1,5 +1,5 @@
 import request from 'supertest';
-import { app } from '@shared/infra/http/app';
+import { serverHttp } from '@shared/infra/http/app';
 import { AppSource, InitializeConnection } from '@shared/infra/typeorm';
 import { CreateUserDto } from '@users/dtos/CreateUserDto';
 
@@ -23,7 +23,7 @@ describe('Create user controller', () => {
       role: 'colaborador',
     };
 
-    const response = await request(app).post('/api/v1/users').send({
+    const response = await request(serverHttp).post('/api/v1/users').send({
       name: user.name,
       email: user.email,
       password: user.password,
@@ -52,7 +52,7 @@ describe('Create user controller', () => {
       role: 'administrador',
     };
 
-    await request(app).post('/api/v1/users').send({
+    await request(serverHttp).post('/api/v1/users').send({
       name: user.name,
       email: user.email,
       password: user.password,
@@ -60,7 +60,7 @@ describe('Create user controller', () => {
       role: user.role,
     });
 
-    const response = await request(app).post('/api/v1/users').send({
+    const response = await request(serverHttp).post('/api/v1/users').send({
       name: secondUser.name,
       email: secondUser.email,
       password: secondUser.password,
@@ -81,7 +81,7 @@ describe('Create user controller', () => {
       role: 'colaborador',
     };
 
-    const response = await request(app).post('/api/v1/users').send({
+    const response = await request(serverHttp).post('/api/v1/users').send({
       name: user.name,
       email: user.email,
       password: user.password,

@@ -1,5 +1,5 @@
 import request from 'supertest';
-import { app } from '@shared/infra/http/app';
+import { serverHttp } from '@shared/infra/http/app';
 import { AppSource, InitializeConnection } from '@shared/infra/typeorm';
 import { hash } from 'bcryptjs';
 
@@ -19,7 +19,7 @@ describe('Authenticate user controller', () => {
   });
 
   it('should be able to create a session for the user', async () => {
-    const response = await request(app).post('/api/v1/users/login').send({
+    const response = await request(serverHttp).post('/api/v1/users/login').send({
       email: 'admin@point.com.br',
       password: 'admin',
     });
@@ -29,7 +29,7 @@ describe('Authenticate user controller', () => {
   });
 
   it('should not be able to create session for user, invalid email', async () => {
-    const response = await request(app).post('/api/v1/users/login').send({
+    const response = await request(serverHttp).post('/api/v1/users/login').send({
       email: 'admin@point2.com.br',
       password: 'admin',
     });
@@ -39,7 +39,7 @@ describe('Authenticate user controller', () => {
   });
 
   it('should not be able to create session for user, invalid password', async () => {
-    const response = await request(app).post('/api/v1/users/login').send({
+    const response = await request(serverHttp).post('/api/v1/users/login').send({
       email: 'admin@point.com.br',
       password: 'admin2',
     });
