@@ -19,6 +19,7 @@ const config: Config = {
     '^@providers/(.*)$': '<rootDir>/src/shared/providers/$1',
     '^@users/(.*)$': '<rootDir>/src/modules/users/$1',
     '^@config/(.*)$': '<rootDir>/src/config/$1',
+    '^@socket/(.*)$': '<rootDir>/src/shared/infra/http/socket/$1',
   },
 };
 

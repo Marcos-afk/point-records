@@ -23,7 +23,7 @@ const { io, serverHttp } = connectToSocket(app);
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, '..', 'src', 'tmp')));
+app.use(express.static(path.join(__dirname, '..', 'src', 'shared', 'infra', 'http', 'tmp')));
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerOutput));
 app.use(rateLimiter);
 app.use('/api/v1', Routes);

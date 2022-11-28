@@ -1,6 +1,5 @@
 import { serverHttp } from './app';
 import { Signale } from 'signale';
-import '@socket/websocket';
 
 const PORT = process.env.PORT;
 const log = new Signale();
