@@ -1,0 +1,21 @@
+#Server
+PORT= 5000
+
+
+#Database
+
+POSTGRES_HOST = database
+POSTGRES_USER = docker
+POSTGRES_PASSWORD = d41d8cd98f00b204
+POSTGRES_DB = point_records
+POSTGRES_DB_TEST= point_records_test
+
+#Redis
+REDIS_HOST = redis
+REDIS_PORT = 6379
+REDIS_PASSWORD = eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
+
+
+#Jwt
+JWT_KEY = masterkey
+JWT_EXPIRES_IN = 1d
