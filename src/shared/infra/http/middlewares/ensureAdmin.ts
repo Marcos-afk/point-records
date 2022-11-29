@@ -13,7 +13,7 @@ export const ensureAdmin = async (req: Request, res: Response, next: NextFunctio
   }
 
   if (user.role.toLowerCase() !== 'administrador' && user.role.toLowerCase() !== 'admin') {
-    throw new AppError('Acesso negado', 403);
+    throw new AppError('Acesso negado', 401);
   }
 
   return next();
