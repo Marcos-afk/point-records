@@ -49,7 +49,7 @@ yarn migration:run (executar todas as migrações)
 
 // Requests
 
-Arquivo com requests[]
+[Arquivo com requests](https://github.com/Marcos-afk/point-records/blob/master/Requests%20point%20records%20api)
 
 // Tests
 criar manualmente uma database e adicionar seu nom em POSTGRES_DB_TEST(para que seja possível rodar os testes de integração)
