@@ -1,5 +1,6 @@
 import { AppError } from '@shared/errors/AppError';
 import { CreatePointRecordDto } from '@users/dtos/CreatePointRecordDto';
+import { PointRecordMapper } from '@users/mapper/PointRecordMapper';
 import { PointRecordsRepositoryProps } from '@users/repositories/PointRecordsRepositoryProps';
 import { UsersRepositoryProps } from '@users/repositories/UsersRepositoryProps';
 import { inject, injectable } from 'tsyringe';
@@ -17,6 +18,10 @@ export class CreatePointRecordUseCase {
       throw new AppError('Usuário não encontrado', 404);
     }
 
-    return await this.pointRecordsRepository.create({ user_id });
+    const pointRecord = await this.pointRecordsRepository.create({ user_id });
+    pointRecord.user = isExistingUser;
+
+    const formattedPointRecord = PointRecordMapper.toDto(pointRecord);
+    return formattedPointRecord;
   }
 }

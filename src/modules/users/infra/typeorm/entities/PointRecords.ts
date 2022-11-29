@@ -10,7 +10,7 @@ export class PointRecords {
   @JoinColumn({ name: 'user_id' })
   user: User;
 
-  @Column()
+  @Column({ select: false })
   user_id: number;
 
   @CreateDateColumn()

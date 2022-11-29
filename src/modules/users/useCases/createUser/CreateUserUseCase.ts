@@ -25,6 +25,7 @@ export class CreateUserUseCase {
     const hashPassword = await this.hashProvider.hash(password);
     const user = await this.usersRepository.create({ name, email, password: hashPassword, role });
 
-    return UserMapper.dto(user);
+    const formattedUser = UserMapper.toDto(user);
+    return formattedUser;
   }
 }

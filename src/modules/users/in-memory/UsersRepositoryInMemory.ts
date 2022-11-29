@@ -23,10 +23,6 @@ export class UsersRepositoryInMemory implements UsersRepositoryProps {
     return null;
   }
 
-  async findUsersAdmin(): Promise<User[]> {
-    return this.users.filter(u => u.role === 'admin');
-  }
-
   async create({ name, email, password, role }: CreateUserDto): Promise<User> {
     const user = new User();
     Object.assign(user, {

@@ -30,7 +30,7 @@ export class AuthenticateUserUseCase {
       expiresIn: authConfig.expires_in_token,
     });
 
-    const formattedUser = UserMapper.dto(user);
+    const formattedUser = UserMapper.toDto(user);
 
     return { user: formattedUser, token };
   }
