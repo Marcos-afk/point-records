@@ -1,7 +1,7 @@
 import request from 'supertest';
 import { serverHttp } from '@shared/infra/http/app';
 import { AppSource, InitializeConnection } from '@shared/infra/typeorm';
-import { CreateUserDto } from '@users/dtos/CreateUserDto';
+import { mock } from './mock';
 
 describe('Create user controller', () => {
   beforeAll(async () => {
@@ -15,20 +15,12 @@ describe('Create user controller', () => {
   });
 
   it('should be able to create a new user', async () => {
-    const user: CreateUserDto = {
-      name: 'usuário',
-      email: 'teste@gmail.com',
-      password: '12345678',
-      confirmPassword: '12345678',
-      role: 'colaborador',
-    };
-
     const response = await request(serverHttp).post('/api/v1/users').send({
-      name: user.name,
-      email: user.email,
-      password: user.password,
-      confirmPassword: user.confirmPassword,
-      role: user.role,
+      name: mock[0].name,
+      email: mock[0].email,
+      password: mock[0].password,
+      confirmPassword: mock[0].confirmPassword,
+      role: mock[0].role,
     });
 
     expect(response.body.message).toBe('Usuário cadastrado com sucesso!');
@@ -36,36 +28,12 @@ describe('Create user controller', () => {
   });
 
   it('should not be able to create user, user email already exists', async () => {
-    const user: CreateUserDto = {
-      name: 'usuário',
-      email: 'teste2@gmail.com',
-      password: '12345678',
-      confirmPassword: '12345678',
-      role: 'colaborador',
-    };
-
-    const secondUser: CreateUserDto = {
-      name: 'usuário 2',
-      email: 'teste2@gmail.com',
-      password: '12345678',
-      confirmPassword: '12345678',
-      role: 'administrador',
-    };
-
-    await request(serverHttp).post('/api/v1/users').send({
-      name: user.name,
-      email: user.email,
-      password: user.password,
-      confirmPassword: user.confirmPassword,
-      role: user.role,
-    });
-
     const response = await request(serverHttp).post('/api/v1/users').send({
-      name: secondUser.name,
-      email: secondUser.email,
-      password: secondUser.password,
-      confirmPassword: secondUser.confirmPassword,
-      role: user.role,
+      name: mock[1].name,
+      email: mock[1].email,
+      password: mock[1].password,
+      confirmPassword: mock[1].confirmPassword,
+      role: mock[1].role,
     });
 
     expect(response.body.message).toBe('Email inválido');
@@ -73,20 +41,12 @@ describe('Create user controller', () => {
   });
 
   it('should not be able to create user, passwords do not match', async () => {
-    const user: CreateUserDto = {
-      name: 'usuário',
-      email: 'teste3@gmail.com',
-      password: '123456789',
-      confirmPassword: '12345678',
-      role: 'colaborador',
-    };
-
     const response = await request(serverHttp).post('/api/v1/users').send({
-      name: user.name,
-      email: user.email,
-      password: user.password,
-      confirmPassword: user.confirmPassword,
-      role: user.role,
+      name: mock[2].name,
+      email: mock[2].email,
+      password: mock[2].password,
+      confirmPassword: mock[2].confirmPassword,
+      role: mock[2].role,
     });
 
     expect(response.body.message).toBe('Senhas não conferem');
