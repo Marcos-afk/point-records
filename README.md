@@ -37,7 +37,7 @@ Api de gerenciamento de pontos feitos em NodeJS com o uso de Socket.io
 
 ## 👨🏻‍💻 Requests
 
-[Arquivo com requests do insomnia](https://github.com/Marcos-afk/point-records/blob/master/Requests%20point%20records%20api)
+[Arquivo com requests do insomnia](https://github.com/Marcos-afk/point-records/blob/master/Requests%20point%20records%20api.json)
 
 ## :rocket: Executando o projeto, rodando testes e acesso a documentação
 
