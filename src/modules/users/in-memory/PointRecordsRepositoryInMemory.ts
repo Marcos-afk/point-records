@@ -9,6 +9,10 @@ export class PointRecordsRepositoryInMemory implements PointRecordsRepositoryPro
     return this.pointsRecords;
   }
 
+  async findPointRecordsByUser(user_id: number): Promise<PointRecords[]> {
+    return this.pointsRecords.filter(p => p.user_id === user_id);
+  }
+
   async create({ user_id }: CreatePointRecordDto): Promise<PointRecords> {
     const pointRecord = new PointRecords();
     Object.assign(pointRecord, {
